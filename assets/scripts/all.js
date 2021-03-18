@@ -82,34 +82,7 @@ function toggleRoom(data) {
     var roompicker = document.querySelectorAll('.roompicker');
     var room = e.target.dataset.room;
     var parent = e.target.parentNode;
-    alert(e.target.textContent);
-
-    if (!room) {
-      removeElemt(roompicker);
-      return;
-    }
-
-    if (roompicker.length > 0) {
-      removeElemt(roompicker);
-    } else {
-      showRoomList(data, parent);
-    } 
-
-
-    data.filter(function (item) {
-      if (room === item.name) {
-        roomName = item.name;
-        roomId = item.id;
-      }
-
-      ints.forEach(function (item) {
-        item.value = roomName;
-      });
-      return {
-        roomName: roomName,
-        roomId: roomId
-      };
-    }); 
+    alert(e.target.textContent); 
   }
 
   window.addEventListener('mouseup touchend', activeEvent);
