@@ -70,11 +70,7 @@ function toggleRoom(data) {
   if (ints.length === 1) {
     roomId = location.search.split('?')[1].split('&')[1];
     data.filter(function (item) {
-      if (roomId === item.id) {
-        roomName = item.name;
-      }
-
-      return roomName;
+      if (roomId === item.id) ints[0].value = item.name;
     });
   }
 
@@ -120,7 +116,7 @@ function roomFilter(data) {
         roomName: roomName,
         roomId: roomId
       };
-    }); 
+    });
   });
 }
 
@@ -448,11 +444,6 @@ window.addEventListener('click', function (e) {
     }
   }
 
-  if (btn === 'close') {
-    closeAlert();
-  }
-
-  if (btn === 'delete') {
-    deleteData();
-  }
+  if (btn === 'close') closeAlert();
+  if (btn === 'delete') deleteData();
 });
