@@ -78,8 +78,8 @@ var currency = function currency(x) {
 var body = document.body;
 var wrapper = getElemt('.wrapper');
 var load = getElemt('.loading');
-var alert = getElemt('.alert');
-var cont = alert.querySelector('.alert-content');
+var popup = getElemt('.alert');
+var cont = popup.querySelector('.alert-content');
 var roomName;
 var roomId;
 var check = 0;
@@ -106,10 +106,10 @@ function loading() {
 }
 
 function closeAlert() {
-  alert.classList.add('close');
+  popup.classList.add('close');
   setTimeout(function () {
-    alert.style.display = 'none';
-    alert.classList.remove('close');
+    popup.style.display = 'none';
+    popup.classList.remove('close');
     cont.innerHTML = '';
   }, 600);
 }

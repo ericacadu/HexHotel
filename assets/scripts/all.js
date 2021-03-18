@@ -114,9 +114,9 @@ function toggleRoom(data) {
       var url = "./room.html?".concat(roomId);
       location.assign(url);
     }
-  }
+  } 
 
-  window.addEventListener('mouseup touchend', activeEvent);
+
   window.addEventListener('click', activeEvent);
 }
 
@@ -217,12 +217,12 @@ function getBookingData(data) {
   window.addEventListener('click', function (e) {
     var cal = e.target.dataset.cal;
     var total = getElemt('.form-total');
-    var alert = getElemt('.msg-alert');
+    var popup = getElemt('.msg-alert');
     if (!cal) return;
 
     if (dateArray.length < 2) {
       total.style.display = 'none';
-      alert.style.display = 'none';
+      popup.style.display = 'none';
       return;
     }
 
@@ -265,7 +265,7 @@ function calcPrice(array) {
 
 function showPrice(data) {
   var total = getElemt('.form-total');
-  var alert = getElemt('.msg-alert');
+  var popup = getElemt('.msg-alert');
   var days = calcPrice(bookingDates);
   var price = {
     normal: data.normalDayPrice * (days.totalDays.length - days.weekend.length),
@@ -288,13 +288,13 @@ function showPrice(data) {
   var totalCont = "\n    <li class=\"total-price\">\n      <label>TOTAL</label>\n      <div class=\"price\">".concat(currency(totalPrice), "</div>\n    </li>");
 
   if (soldoutDates.length > 0) {
-    alert.innerHTML = 'The date you selected is sold out.';
-    alert.style.display = 'block';
+    popup.innerHTML = 'The date you selected is sold out.';
+    popup.style.display = 'block';
     total.style.display = 'none';
   } else {
     total.innerHTML = normalCont + holidayCont + serviceCont + totalCont;
     total.style.display = 'block';
-    alert.style.display = 'none';
+    popup.style.display = 'none';
   }
 } 
 
@@ -330,21 +330,21 @@ function verify() {
     return item.parentNode.querySelector('.msg');
   };
 
-  if (!alert) {
+  if (!popup) {
     return;
   }
 
   if (soldoutDates.length > 0) {
     cont.innerHTML = 'Please select correct dates.';
-    alert.style.display = 'block';
+    popup.style.display = 'block';
     check = 1;
   } else if (dateArray.length < 2) {
     cont.innerHTML = 'Please select 2 dates at least.';
-    alert.style.display = 'block';
+    popup.style.display = 'block';
     check = 1;
   } else if (!roomName) {
     cont.innerHTML = 'Please select room style.';
-    alert.style.display = 'block';
+    popup.style.display = 'block';
     check = 1;
   } else if (ints.length > 0) {
     ints.forEach(function (item) {
@@ -410,11 +410,11 @@ function deleteData() {
 
     if (status === 200) {
       cont.innerHTML = 'All reservations has been deleted.';
-      alert.style.display = 'block';
+      popup.style.display = 'block';
     }
   })["catch"](function (error) {
     cont.innerHTML = 'Oops. Something went wrong.<br>Please try again.';
-    alert.style.display = 'block';
+    popup.style.display = 'block';
     console.log(error);
   });
 } 
