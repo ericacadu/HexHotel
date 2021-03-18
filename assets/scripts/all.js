@@ -78,15 +78,44 @@ function toggleRoom(data) {
     });
   }
 
-  function activeEvent(e) {
+  window.addEventListener('click', function (e) {
     var roompicker = document.querySelectorAll('.roompicker');
     var room = e.target.dataset.room;
     var parent = e.target.parentNode;
-    alert(e.target.textContent); 
-  }
+    alert(e.target.textContent);
 
-  window.addEventListener('mouseup touchend', activeEvent);
-  window.addEventListener('click', activeEvent);
+    if (!room) {
+      removeElemt(roompicker);
+      return;
+    }
+
+    if (roompicker.length > 0) {
+      removeElemt(roompicker);
+    } else {
+      showRoomList(data, parent);
+    }
+
+    if (room === 'true') return;
+    data.filter(function (item) {
+      if (room === item.name) {
+        roomName = item.name;
+        roomId = item.id;
+      }
+
+      ints.forEach(function (item) {
+        item.value = roomName;
+      });
+      return {
+        roomName: roomName,
+        roomId: roomId
+      };
+    });
+
+    if (rooms.length === 1) {
+      var url = "./room.html?".concat(roomId);
+      location.assign(url);
+    }
+  });
 }
 
 function showRoomList(data, target) {
