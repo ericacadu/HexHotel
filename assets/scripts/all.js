@@ -95,6 +95,7 @@ function toggleRoom(data) {
     }
 
     if (room === 'true') return;
+    alert(e.target.textContent);
     data.filter(function (item) {
       if (room === item.name) {
         roomName = item.name;
