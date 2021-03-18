@@ -79,7 +79,7 @@ function toggleRoom(data) {
   }
 
   function activeEvent(e) {
-    var roompicker = document.querySelectorAll('.roompicker');
+    var roompicker = getAllElemt('.roompicker');
     var room = e.target.dataset.room;
     var parent = e.target.parentNode; 
 
@@ -92,7 +92,12 @@ function toggleRoom(data) {
       removeElemt(roompicker);
     } else {
       showRoomList(data, parent);
-      alert(e.target.textContent);
+      var list = getAllElemt('.roompicker li');
+      list.forEach(function (item) {
+        item.addEventListener('click', function () {
+          alert(item.textContent);
+        });
+      });
     } 
 
 
