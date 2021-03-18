@@ -1,0 +1,123 @@
+.datepicker, .roompicker {
+  width: calc(100% + 2px);
+  top: 100%;
+  left: -1px;
+  position: absolute;
+  z-index: 8;
+  font-size: 16px;
+  background: #FFFFFF;
+  border: 1px solid #748290; }
+
+.datepicker {
+  padding: 16px 8px; }
+
+.roompicker {
+  padding: 0; }
+
+.date-header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 600;
+  text-transform: capitalize; }
+  .date-header .title {
+    color: #748290;
+    cursor: default; }
+  .date-header i {
+    padding: 5px; }
+    .date-header i:hover {
+      background: #E3E6E9; }
+
+.data-body {
+  padding-top: 20px; }
+  .data-body table {
+    width: 100%;
+    text-align: center;
+    color: #748290;
+    font-size: 14px; }
+  .data-body th {
+    font-weight: 450;
+    text-transform: capitalize; }
+  .data-body td {
+    padding: 10px 8px;
+    position: relative;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    font-weight: 400;
+    border: 1px solid #FFFFFF;
+    cursor: pointer; }
+    .data-body td:hover, .data-body td.on {
+      background: #E3E6E9; }
+    .data-body td.act {
+      background: #569DC3;
+      color: #FFFFFF; }
+    .data-body td.now::after {
+      width: 100%;
+      height: 100%;
+      top: 50%;
+      left: 50%;
+      position: absolute;
+      -webkit-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%);
+      content: '';
+      display: block;
+      border: 1px solid #748290; }
+    .data-body td.off {
+      color: #E3E6E9;
+      cursor: default; }
+      .data-body td.off:hover {
+        background: #FFFFFF; }
+    .data-body td.rsv {
+      font-style: italic;
+      color: #E3E6E9;
+      cursor: default; }
+      .data-body td.rsv:hover {
+        background: #FFFFFF; }
+    .data-body td.sold {
+      font-style: italic;
+      color: #FFFFFF;
+      background: #EA5B5B;
+      cursor: default;
+      position: relative; }
+      .data-body td.sold:hover {
+        background: #EA5B5B; }
+      .data-body td.sold::after {
+        width: auto;
+        content: 'SOLD OUT';
+        display: block;
+        color: #FFFFFF;
+        white-space: nowrap;
+        font-style: normal;
+        border: 0;
+        -webkit-transform-origin: center bottom;
+            -ms-transform-origin: center bottom;
+                transform-origin: center bottom;
+        bottom: 0;
+        left: 50%;
+        position: absolute;
+        -webkit-transform: translate(-50%, 0) scale(0.6);
+            -ms-transform: translate(-50%, 0) scale(0.6);
+                transform: translate(-50%, 0) scale(0.6); }
+
+.roompicker li {
+  padding: 24px 32px;
+  -webkit-transition: all 0.15s linear;
+  -o-transition: all 0.15s linear;
+  transition: all 0.15s linear;
+  text-transform: capitalize;
+  cursor: pointer; }
+  .roompicker li + li {
+    border-top: 1px solid #748290; }
+  .roompicker li:hover, .roompicker li.on {
+    background: #E3E6E9; }

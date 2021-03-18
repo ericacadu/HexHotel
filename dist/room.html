@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <title>HexHotel</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta content="width=device-width initial-scale=1 minimum-scale=1.0 maximum-scale=1.0 user-scalable=0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,chrome=1">
+    <base href="./">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="icon" type="image/png" href="./assets/images/favicon.png">
+  </head>
+  <body>
+    <!--container-->
+    <div class="loading">
+      <p>LOADING</p>
+      <div class="dot"><span></span><span></span><span></span></div>
+    </div>
+    <div class="alert">
+      <div class="alert-body col-md-6">
+        <div class="alert-content"></div>
+        <button data-button="close">CLOSE</button>
+      </div>
+    </div>
+    <div class="wrapper">
+      <nav class="fixed show"><a class="logo" href="./"><span>HH</span></a>
+        <div class="form-item form-room">
+          <label for="room"><i class="material-icons">hotel</i></label>
+          <input type="button" value="ROOM STYLE">
+        </div>
+      </nav>
+      <div class="container" id="room">
+        <div class="row">
+          <div class="img-group col-md-9">
+            <h1></h1>
+            <div class="img-large"></div>
+            <ul class="list-group mt-3">
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+            <div class="label-weekday">weekday price</div>
+          </div>
+          <div class="form-group col-md-4 fixed" id="totle-price">
+            <div class="room-price">
+              <div class="normal-price"></div>
+              <div class="holiday-price"></div>
+            </div>
+            <div class="form-item form-date">
+              <label for="date_checkin"><i class="material-icons">date_range</i></label>
+              <input type="button" value="check-in &amp; Check-out">
+            </div>
+            <div class="form-total"></div>
+            <button class="send" type="submit" data-button="send">reserve now</button>
+            <div class="msg-alert"></div>
+          </div>
+        </div>
+        <div class="row col-md-8 mt-5">
+          <div class="description">
+            <div class="info-title mb-2">description</div>
+            <div class="info-cont"></div>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="amenities">
+            <div class="info-title mb-2">Amenities</div>
+            <div class="info-cont">
+              <ul class="amenities-list">
+                <li><i class="material-icons">wifi</i><span>Wi-Fi</span></li>
+                <li><i class="material-icons">tv</i><span>Television</span></li>
+                <li><i class="material-icons">landscape</i><span>Great View</span></li>
+                <li><i class="material-icons">restaurant</i><span>Breakfast</span></li>
+                <li><i class="material-icons">ac_unit</i><span>Air Conditioner</span></li>
+                <li><i class="material-icons">smoke_free</i><span>Smoke Free</span></li>
+                <li><i class="material-icons">local_bar</i><span>Mini Bar</span></li>
+                <li><i class="material-icons">kitchen</i><span>Refrigerator</span></li>
+                <li><i class="material-icons">child_care</i><span>Child Friendly</span></li>
+                <li><i class="material-icons">room_service</i><span>Room Service</span></li>
+                <li><i class="material-icons">weekend</i><span>Sofa</span></li>
+                <li><i class="material-icons">pets</i><span>Pet Friendly</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="row mt-5">
+          <div class="map col-md-12">
+            <div class="address"><span>No. 5, Kaokao St., Kaohsiung City 803, Taiwan</span><br><span>+886 7 890 1234</span><br><span>service@hexhotel.com</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="container pt-0">
+        <div class="row">
+          <div class="copyright col-md-12">
+            <div class="logo-sm">HH</div>
+            <p>© <span class="year"></span> HexHotel. All rights reserved.</p>
+            <p>Design by <a href="https://challenge.thef2e.com/user/2760?schedule=3948#works-3948" target="_blank">Juniwu </a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./assets/scripts/vendors.js"></script>
+    <script src="./assets/scripts/main.js"></script>
+    <script src="./assets/scripts/datepicker.js"></script>
+    <script src="./assets/scripts/all.js"></script>
+  </body>
+</html>

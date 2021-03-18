@@ -1,0 +1,114 @@
+@import '../mixins/mixins'
+html, body
+  width: 100%
+  +margin(0)
+  
+span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video
+  +margin(0)
+  +padding(0)
+  border: 0
+  font: inherit
+  vertical-align: baseline
+  +box-sizing(border-box)
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, main
+  display: block
+input, select, table, th, td, input, textarea, button
+input, button
+  +margin(0)
+  +padding(0)
+  font-size: 16px
+  font-weight: 400
+  background: transparent
+  border: 0
+  cursor: pointer
+  &:focus
+    outline: none
+  &::placeholder
+    color: $dark
+    font-weight: 380
+input
+  width: calc(100% - 60px)
+  color: $dark
+  text-align: left
+  vertical-align: middle
+  &[type="button"]
+    text-transform: uppercase
+    line-height: 2
+    letter-spacing: 0.02em
+  &::placeholder
+    font-weight: 400
+button, .home
+  width: 100%
+  color: $bgColor
+  line-height: 2
+  font-weight: 400
+  text-align: center
+  letter-spacing: 2px
+  vertical-align: middle
+  text-transform: uppercase
+  background: $secondColor
+  +padding(18px 30px)
+  +transition(all, 0.15s)
+  &:hover
+    color: $bgColor
+    background: $mainColor
+img
+  width: 100%
+  border: 0
+  outline: 0
+  +centeralign
+  transform-origin: center
+ul,li,ol
+  width: 100%
+  +margin(0)
+  +padding(0)
+  list-style: none
+label
+  display: inline-block
+  text-transform: uppercase
+  cursor: inherit
+i
+  color: $mainColor
+  font-size: 24px
+  vertical-align: middle
+  cursor: pointer
+a
+  text-decoration: none
+  &:hover
+    text-decoration: none
+p, span
+  display: inline-block
+  vertical-align: middle
+h1, h3
+  +Helvetica
+  font-weight: 700
+h1
+  +relative(0)
+  +padding(bottom 9px)
+  font-style: italic
+  font-size: 40px
+  line-height: 1.2
+  color: $mainColor
+  cursor: default
+  z-index: 2
+h3
+  font-size: 30px
+  color: $dark
+
+[class*='col']
+  +padding(0)
+[class*="container"]
+  +padding(0)

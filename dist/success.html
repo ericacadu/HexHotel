@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <title>HexHotel</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta content="width=device-width initial-scale=1 minimum-scale=1.0 maximum-scale=1.0 user-scalable=0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,chrome=1">
+    <base href="./">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="icon" type="image/png" href="./assets/images/favicon.png">
+  </head>
+  <body>
+    <!--container-->
+    <div class="loading">
+      <p>LOADING</p>
+      <div class="dot"><span></span><span></span><span></span></div>
+    </div>
+    <div class="alert">
+      <div class="alert-body col-md-6">
+        <div class="alert-content"></div>
+        <button data-button="close">CLOSE</button>
+      </div>
+    </div>
+    <div class="wrapper">
+      <nav class="fixed show"><a class="logo" href="./"><span>HH</span></a>
+        <div class="form-item form-room">
+          <label for="room"><i class="material-icons">hotel</i></label>
+          <input type="button" value="ROOM STYLE">
+        </div>
+      </nav>
+      <div class="container col-md-9" id="form">
+        <div class="row success-title">Reservation<br>received!</div>
+        <div class="row success-detail">
+          <ul>
+            <li>
+              <div class="detail-form">
+                <div class="title">Guest</div>
+                <div class="info"></div>
+              </div>
+              <div class="detail-form">
+                <div class="title">phone</div>
+                <div class="info"></div>
+              </div>
+            </li>
+            <li>
+              <div class="detail-form">
+                <div class="title">room</div>
+                <div class="info"></div>
+              </div>
+            </li>
+            <li>
+              <div class="detail-form">
+                <div class="title">check-in</div>
+                <div class="info"></div>
+              </div>
+              <div class="detail-form">
+                <div class="title">check-out</div>
+                <div class="info"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="row success-btns my-5">
+          <button data-button="delete">
+             Delete all reservations<span>(For Developer)</span></button><a class="home" href="./">homepage</a>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row footer">
+          <div class="copyright">
+            <div class="logo-sm">HH</div>
+            <p>© <span class="year"></span> HexHotel. All rights reserved.</p>
+            <p>Design by <a href="https://challenge.thef2e.com/user/2760?schedule=3948#works-3948" target="_blank">Juniwu </a></p>
+          </div>
+          <div class="address">No. 5, Kaokao St., Kaohsiung City 803, Taiwan</div>
+        </div>
+      </div>
+    </div>
+    <script src="./assets/scripts/vendors.js"></script>
+    <script src="./assets/scripts/main.js"></script>
+    <script src="./assets/scripts/datepicker.js"></script>
+    <script src="./assets/scripts/all.js"></script>
+  </body>
+</html>

@@ -1,0 +1,156 @@
+html, body {
+  width: 100%;
+  margin: 0; }
+
+span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, main {
+  display: block; }
+
+input, button {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 400;
+  background: transparent;
+  border: 0;
+  cursor: pointer; }
+  input:focus, button:focus {
+    outline: none; }
+  input::-webkit-input-placeholder, button::-webkit-input-placeholder {
+    color: #748290;
+    font-weight: 380; }
+  input::-moz-placeholder, button::-moz-placeholder {
+    color: #748290;
+    font-weight: 380; }
+  input:-ms-input-placeholder, button:-ms-input-placeholder {
+    color: #748290;
+    font-weight: 380; }
+  input::-ms-input-placeholder, button::-ms-input-placeholder {
+    color: #748290;
+    font-weight: 380; }
+  input::placeholder, button::placeholder {
+    color: #748290;
+    font-weight: 380; }
+
+input {
+  width: calc(100% - 60px);
+  color: #748290;
+  text-align: left;
+  vertical-align: middle; }
+  input[type="button"] {
+    text-transform: uppercase;
+    line-height: 2;
+    letter-spacing: 0.02em; }
+  input::-webkit-input-placeholder {
+    font-weight: 400; }
+  input::-moz-placeholder {
+    font-weight: 400; }
+  input:-ms-input-placeholder {
+    font-weight: 400; }
+  input::-ms-input-placeholder {
+    font-weight: 400; }
+  input::placeholder {
+    font-weight: 400; }
+
+button, .home {
+  width: 100%;
+  color: #FFFFFF;
+  line-height: 2;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 2px;
+  vertical-align: middle;
+  text-transform: uppercase;
+  background: #569DC3;
+  padding: 18px 30px;
+  -webkit-transition: all 0.15s linear;
+  -o-transition: all 0.15s linear;
+  transition: all 0.15s linear; }
+  button:hover, .home:hover {
+    color: #FFFFFF;
+    background: #2D3643; }
+
+img {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transform-origin: center;
+      -ms-transform-origin: center;
+          transform-origin: center; }
+
+ul, li, ol {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+label {
+  display: inline-block;
+  text-transform: uppercase;
+  cursor: inherit; }
+
+i {
+  color: #2D3643;
+  font-size: 24px;
+  vertical-align: middle;
+  cursor: pointer; }
+
+a {
+  text-decoration: none; }
+  a:hover {
+    text-decoration: none; }
+
+p, span {
+  display: inline-block;
+  vertical-align: middle; }
+
+h1, h3 {
+  font-family: "Helvetica Neue", Helvetica;
+  font-weight: 700; }
+
+h1 {
+  position: relative;
+  padding-bottom: 9px;
+  font-style: italic;
+  font-size: 40px;
+  line-height: 1.2;
+  color: #2D3643;
+  cursor: default;
+  z-index: 2; }
+
+h3 {
+  font-size: 30px;
+  color: #748290; }
+
+[class*='col'] {
+  padding: 0; }
+
+[class*="container"] {
+  padding: 0; }

@@ -1,0 +1,96 @@
+@import '../mixins/mixins'
+*
+  // outline: 1px solid red
+// -------------------------------------------------------------
+// viewport
+// -------------------------------------------------------------
++breakpoint(md)
+  // Basic
+  h1
+    background: $bgColor
+    writing-mode: vertical-lr
+    font-size: 48px
+    +absolute(top 0 left 0)
+  h3
+    font-size: 36px
+  nav
+    +flex(space-between)
+
+  // Component
+  .header
+    +margin(top 3em)
+  .dropdown
+    min-width: 350px
+  .container
+    .form-group
+      +absolute(top 25% right 0)
+      +margin(0)
+      &.fixed
+        +absolute(top 100% right 50%)
+        transform-origin: top right
+
+  // All
+  .recommend, .rooms
+    +padding(0)
+  .room-cloumns
+    flex-flow: row
+    .room-item, .title-group
+      width: calc((100% - 30px) / 3)
+      max-width: 350px
+      & + .room-item
+        +margin(top 0)
+  .banner .title-group
+    +padding(0)
+  #room, #form
+    .row
+      flex-flow: row
+      +padding(0)
+  .description
+    max-width: 360px
+  .img-group 
+    .img-large
+      +size(100%, 320px)
+    .label-weekday
+      display: block
+    .list-group
+      justify-content: start
+    li
+      width: 160px
+      min-width: 0
+      img
+        +size(100%, auto)
+  .amenities-list li
+    width: calc(100%/3)
+  #form
+    .form-group
+      +absolute(top 0)
+  .reserve-info
+    +margin(top 0)
+  .success-detail .title
+    flex: 3
+  .success-btns
+    flex-flow: row
+    .home
+      +margin(left 4%)
+    button
+      font-size: 13px
+
++breakpoint(lg)
+  // Component
+  .footer
+    flex-flow: row
+  .copyright
+    text-align: left
+  .container .form-group.fixed
+    +fixed(top 25% right 50%)
+
+  // All
+  .room-cloumns
+    .room-item, .title-group
+      max-width: 350px
+  .description
+    max-width: none
+  .img-group .img-large
+    +size(100%, 480px)
+  .success-btns button
+    font-size: 15px

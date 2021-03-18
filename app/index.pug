@@ -1,0 +1,51 @@
+extends ./pages/_layout.pug
+block append content
+  include ./pages/_loading.pug
+  include ./pages/_alert.pug
+  .wrapper
+    nav
+      a.logo(href="./")
+        span HH
+      .form-item.form-date
+        label
+          i.material-icons date_range
+        input(type="button", value="check-in & Check-out")
+      .form-item.form-room
+        label(for="room")
+          i.material-icons hotel
+        input(type="button", value="ROOM STYLE")
+      button(data-button="send") reserve now
+    .container
+      .row
+        .header.col-md-12
+          h1 HexHotel
+          .form-group
+            .form-item.form-date
+              label
+                i.material-icons date_range
+              input(type="button", value="check-in & Check-out")
+            .form-item.form-room
+              label(for="room")
+                i.material-icons hotel
+              input(type="button", value="ROOM STYLE")
+            button(data-button="send") reserve now
+    .container
+      .row.my-5
+        .recommend.col-md-12
+          .title-group.mb-4
+            h3 Recommend
+            p You may be interested in our popular rooms
+          .room-cloumns
+    .container-fluid
+      .row
+        .banner.col-md-12
+          .title-group.col-md-9
+            h3 Reserve the best service
+            p over 50,000 commendations from our guests
+    .container
+      .row.mt-5
+        .rooms.col-md-12
+          .room-cloumns
+          .room-cloumns
+          .room-cloumns
+    include ./pages/_footer.pug
