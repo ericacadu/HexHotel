@@ -78,8 +78,9 @@ function toggleRoom(data) {
     });
   }
 
-  function activeEvent(e) {
+  window.addEventListener('click', function (e) {
     var roompicker = getAllElemt('.roompicker');
+    var items = getAllElemt('.roompicker li');
     var room = e.target.dataset.room;
     var parent = e.target.parentNode;
 
@@ -94,36 +95,28 @@ function toggleRoom(data) {
       showRoomList(data, parent);
     }
 
-    if (room === 'true') return;
-    var list = getAllElemt('.roompicker li');
-    list.forEach(function (item) {
-      item.addEventListener('click', function () {
-        alert(room);
+    if (room !== 'true') {
+      data.filter(function (item) {
+        if (room === item.name) {
+          roomName = item.name;
+          roomId = item.id;
+        }
+
+        ints.forEach(function (item) {
+          item.value = roomName;
+        });
+        return {
+          roomName: roomName,
+          roomId: roomId
+        };
       });
-    });
-    data.filter(function (item) {
-      if (room === item.name) {
-        roomName = item.name;
-        roomId = item.id;
+
+      if (rooms.length === 1) {
+        var url = "./room.html?".concat(roomId);
+        location.assign(url);
       }
-
-      ints.forEach(function (item) {
-        item.value = roomName;
-      });
-      return {
-        roomName: roomName,
-        roomId: roomId
-      };
-    });
-
-    if (rooms.length === 1) {
-      var url = "./room.html?".concat(roomId);
-      location.assign(url);
     }
-  }
-
-  window.addEventListener('mouseup touchend', activeEvent);
-  window.addEventListener('click', activeEvent);
+  });
 }
 
 function showRoomList(data, target) {
