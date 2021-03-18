@@ -92,10 +92,10 @@ function toggleRoom(data) {
       removeElemt(roompicker);
     } else {
       showRoomList(data, parent);
-    }
+      alert(e.target.textContent);
+    } 
 
-    if (room === 'true') return;
-    alert(e.target.textContent);
+
     data.filter(function (item) {
       if (room === item.name) {
         roomName = item.name;
