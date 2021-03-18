@@ -25,7 +25,7 @@ var getBookings = function getBookings() {
   });
 };
 
-if (pathname === '/room.html') {
+if (pathname.includes('room.html')) {
   id = location.search.split('?')[1];
   window.axios.all([getRooms(), getBookings()]).then(window.axios.spread(function (roomData, bookingData) {
     var rooms = roomData.data.items;
@@ -34,7 +34,7 @@ if (pathname === '/room.html') {
     getRoomsInfo(bookings);
     getBookingData(bookings);
   }));
-} else if (pathname === '/reserve.html') {
+} else if (pathname.includes('reserve.html')) {
   id = location.search.split('?')[1].split('&')[1];
   window.axios.all([getRooms(), getBookings()]).then(window.axios.spread(function (roomData, bookingData) {
     var rooms = roomData.data.items;
@@ -42,7 +42,7 @@ if (pathname === '/room.html') {
     active(rooms);
     getBookingData(bookings);
   }));
-} else if (pathname === '/success.html') {
+} else if (pathname.includes('success.html')) {
   id = location.search.split('?')[1].split('&')[1];
   window.axios.all([getRooms(), getBookings()]).then(window.axios.spread(function (roomData, bookingData) {
     var rooms = roomData.data.items;
