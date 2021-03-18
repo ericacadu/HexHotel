@@ -70,7 +70,10 @@ function toggleRoom(data) {
   if (ints.length === 1) {
     roomId = location.search.split('?')[1].split('&')[1];
     data.filter(function (item) {
-      if (roomId === item.id) ints[0].value = item.name;
+      if (roomId === item.id) {
+        roomName = item.name;
+        return roomName;
+      }
     });
   }
 
