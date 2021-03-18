@@ -78,7 +78,7 @@ function toggleRoom(data) {
     });
   }
 
-  window.addEventListener('click', function (e) {
+  function activeEvent(e) {
     var roompicker = document.querySelectorAll('.roompicker');
     var room = e.target.dataset.room;
     var parent = e.target.parentNode;
@@ -114,7 +114,10 @@ function toggleRoom(data) {
       var url = "./room.html?".concat(roomId);
       location.assign(url);
     }
-  });
+  }
+
+  window.addEventListener('touchend', activeEvent);
+  window.addEventListener('click', activeEvent);
 }
 
 function showRoomList(data, target) {
