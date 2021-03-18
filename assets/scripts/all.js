@@ -114,9 +114,9 @@ function toggleRoom(data) {
       var url = "./room.html?".concat(roomId);
       location.assign(url);
     }
-  } 
+  }
 
-
+  window.addEventListener('mouseup touchend', activeEvent);
   window.addEventListener('click', activeEvent);
 }
 
