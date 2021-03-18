@@ -82,6 +82,7 @@ function toggleRoom(data) {
     var roompicker = document.querySelectorAll('.roompicker');
     var room = e.target.dataset.room;
     var parent = e.target.parentNode;
+    alert(e.target.textContent);
 
     if (!room) {
       removeElemt(roompicker);
