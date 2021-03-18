@@ -108,6 +108,9 @@
   #form .row, #room .row {
     padding: 0 15px; }
 
+#room .form-group {
+  margin: 15px auto auto; }
+
 .img-group {
   position: relative;
   max-width: 825px;
@@ -244,7 +247,7 @@
 .reserve-info {
   width: 100%;
   max-width: 350px;
-  margin-top: 15px; }
+  margin: 15px auto auto; }
   .reserve-info .info-title {
     font-size: 32px;
     font-weight: 700;
@@ -307,7 +310,8 @@
 
 .reserve-detail {
   width: 100%;
-  max-width: 350px; }
+  max-width: 350px;
+  margin: 15px auto auto; }
   .reserve-detail .form-img {
     position: relative;
     padding: 0;

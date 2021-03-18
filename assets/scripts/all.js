@@ -6,8 +6,8 @@ function navBar() {
   var dropdown = getAllElemt('.dropdown');
   var nav = getElemt('nav');
 
-  if (document.body.clientWidth > 767) {
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+  if (body.clientWidth > 767) {
+    if (body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
       nav.style.top = 0;
     } else {
       nav.style.top = '-72px';
@@ -179,11 +179,16 @@ function formFixed() {
   var container = getElemt('.container');
   var formBox = getElemt('.form-group.fixed');
   if (!formBox) return;
-  formBox.style.marginRight = -(container.offsetWidth / 2) + 'px';
+
+  if (body.clientWidth > 992) {
+    formBox.style.marginRight = -(container.offsetWidth / 2) + 'px';
+  } else {
+    formBox.style.marginRight = '';
+  }
 }
 
-window.addEventListener('load', formFixed);
-window.addEventListener('resize', formFixed); 
+window.addEventListener('resize', formFixed);
+window.addEventListener('load', formFixed); 
 
 function getBookingData(data) {
   var id = location.search.split('?')[1];
