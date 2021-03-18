@@ -367,7 +367,7 @@ function verify() {
 }
 
 function isTEL(item) {
-  var reg = /^[09]{2}[0-9]{8}$/;
+  var reg = /^[0]{1}[9]{1}[0-9]{8}$/;
 
   if (!reg.exec(item.value)) {
     return false;
