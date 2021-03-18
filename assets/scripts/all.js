@@ -93,9 +93,9 @@ function toggleRoom(data) {
       removeElemt(roompicker);
     } else {
       showRoomList(data, parent);
-    }
+    } 
 
-    if (room === 'true') return;
+
     data.filter(function (item) {
       if (room === item.name) {
         roomName = item.name;
@@ -109,12 +109,7 @@ function toggleRoom(data) {
         roomName: roomName,
         roomId: roomId
       };
-    });
-
-    if (rooms.length === 1) {
-      var url = "./room.html?".concat(roomId);
-      location.assign(url);
-    }
+    }); 
   }
 
   window.addEventListener('mouseup touchend', activeEvent);
