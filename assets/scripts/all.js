@@ -95,27 +95,33 @@ function toggleRoom(data) {
       showRoomList(data, parent);
     }
 
-    if (room !== 'true') {
-      data.filter(function (item) {
-        if (room === item.name) {
-          roomName = item.name;
-          roomId = item.id;
-        }
+    if (room === 'true') return;
+    items.forEach(function (elemt) {
+      elemt.addEventListener('click', roomFilter(data, room));
+    });
 
-        ints.forEach(function (item) {
-          item.value = roomName;
-        });
-        return {
-          roomName: roomName,
-          roomId: roomId
-        };
-      });
-
-      if (rooms.length === 1) {
-        var url = "./room.html?".concat(roomId);
-        location.assign(url);
-      }
+    if (rooms.length === 1) {
+      var url = "./room.html?".concat(roomId);
+      location.assign(url);
     }
+  });
+}
+
+function roomFilter(data, target) {
+  var ints = getAllElemt('.form-room input');
+  data.filter(function (item) {
+    if (target === item.name) {
+      roomName = item.name;
+      roomId = item.id;
+    }
+
+    ints.forEach(function (item) {
+      item.value = roomName;
+    });
+    return {
+      roomName: roomName,
+      roomId: roomId
+    };
   });
 }
 
