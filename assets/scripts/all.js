@@ -116,7 +116,7 @@ function toggleRoom(data) {
     }
   }
 
-  window.addEventListener('touchend', activeEvent);
+  window.addEventListener('mouseup touchend', activeEvent);
   window.addEventListener('click', activeEvent);
 }
 
