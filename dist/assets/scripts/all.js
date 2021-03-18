@@ -6,8 +6,8 @@ function navBar() {
   var dropdown = getAllElemt('.dropdown');
   var nav = getElemt('nav');
 
-  if (document.body.clientWidth > 767) {
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+  if (body.clientWidth > 767) {
+    if (body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
       nav.style.top = 0;
     } else {
       nav.style.top = '-72px';
@@ -72,14 +72,13 @@ function toggleRoom(data) {
     data.filter(function (item) {
       if (roomId === item.id) {
         roomName = item.name;
+        return roomName;
       }
-
-      return roomName;
     });
   }
 
   window.addEventListener('click', function (e) {
-    var roompicker = document.querySelectorAll('.roompicker');
+    var roompicker = getAllElemt('.roompicker');
     var room = e.target.dataset.room;
     var parent = e.target.parentNode;
 
@@ -92,28 +91,35 @@ function toggleRoom(data) {
       removeElemt(roompicker);
     } else {
       showRoomList(data, parent);
+      roomFilter(data);
     }
 
     if (room === 'true') return;
-    data.filter(function (item) {
-      if (room === item.name) {
-        roomName = item.name;
-        roomId = item.id;
-      }
 
+    if (rooms.length === 1) {
+      var url = "./room.html?".concat(roomId);
+      location.assign(url);
+    }
+  });
+}
+
+function roomFilter(data) {
+  var items = getAllElemt('.roompicker li');
+  var ints = getAllElemt('.form-room input');
+  items.forEach(function (item) {
+    item.addEventListener('click', function () {
+      roomName = item.textContent;
       ints.forEach(function (item) {
         item.value = roomName;
+      });
+      data.filter(function (item) {
+        if (roomName === item.name) roomId = item.id;
       });
       return {
         roomName: roomName,
         roomId: roomId
       };
     });
-
-    if (rooms.length === 1) {
-      var url = "./room.html?".concat(roomId);
-      location.assign(url);
-    }
   });
 }
 
@@ -179,11 +185,16 @@ function formFixed() {
   var container = getElemt('.container');
   var formBox = getElemt('.form-group.fixed');
   if (!formBox) return;
-  formBox.style.marginRight = -(container.offsetWidth / 2) + 'px';
+
+  if (body.clientWidth > 992) {
+    formBox.style.marginRight = -(container.offsetWidth / 2) + 'px';
+  } else {
+    formBox.style.marginRight = '';
+  }
 }
 
-window.addEventListener('load', formFixed);
-window.addEventListener('resize', formFixed); 
+window.addEventListener('resize', formFixed);
+window.addEventListener('load', formFixed); 
 
 function getBookingData(data) {
   var id = location.search.split('?')[1];
@@ -209,12 +220,12 @@ function getBookingData(data) {
   window.addEventListener('click', function (e) {
     var cal = e.target.dataset.cal;
     var total = getElemt('.form-total');
-    var alert = getElemt('.msg-alert');
+    var popup = getElemt('.msg-alert');
     if (!cal) return;
 
     if (dateArray.length < 2) {
       total.style.display = 'none';
-      alert.style.display = 'none';
+      popup.style.display = 'none';
       return;
     }
 
@@ -257,7 +268,7 @@ function calcPrice(array) {
 
 function showPrice(data) {
   var total = getElemt('.form-total');
-  var alert = getElemt('.msg-alert');
+  var popup = getElemt('.msg-alert');
   var days = calcPrice(bookingDates);
   var price = {
     normal: data.normalDayPrice * (days.totalDays.length - days.weekend.length),
@@ -280,13 +291,13 @@ function showPrice(data) {
   var totalCont = "\n    <li class=\"total-price\">\n      <label>TOTAL</label>\n      <div class=\"price\">".concat(currency(totalPrice), "</div>\n    </li>");
 
   if (soldoutDates.length > 0) {
-    alert.innerHTML = 'The date you selected is sold out.';
-    alert.style.display = 'block';
+    popup.innerHTML = 'The date you selected is sold out.';
+    popup.style.display = 'block';
     total.style.display = 'none';
   } else {
     total.innerHTML = normalCont + holidayCont + serviceCont + totalCont;
     total.style.display = 'block';
-    alert.style.display = 'none';
+    popup.style.display = 'none';
   }
 } 
 
@@ -322,21 +333,21 @@ function verify() {
     return item.parentNode.querySelector('.msg');
   };
 
-  if (!alert) {
+  if (!popup) {
     return;
   }
 
   if (soldoutDates.length > 0) {
     cont.innerHTML = 'Please select correct dates.';
-    alert.style.display = 'block';
+    popup.style.display = 'block';
     check = 1;
   } else if (dateArray.length < 2) {
     cont.innerHTML = 'Please select 2 dates at least.';
-    alert.style.display = 'block';
+    popup.style.display = 'block';
     check = 1;
   } else if (!roomName) {
     cont.innerHTML = 'Please select room style.';
-    alert.style.display = 'block';
+    popup.style.display = 'block';
     check = 1;
   } else if (ints.length > 0) {
     ints.forEach(function (item) {
@@ -356,7 +367,7 @@ function verify() {
 }
 
 function isTEL(item) {
-  var reg = /^[09]{2}[0-9]{8}$/;
+  var reg = /^[0]{1}[9]{1}[0-9]{8}$/;
 
   if (!reg.exec(item.value)) {
     return false;
@@ -402,11 +413,11 @@ function deleteData() {
 
     if (status === 200) {
       cont.innerHTML = 'All reservations has been deleted.';
-      alert.style.display = 'block';
+      popup.style.display = 'block';
     }
   })["catch"](function (error) {
     cont.innerHTML = 'Oops. Something went wrong.<br>Please try again.';
-    alert.style.display = 'block';
+    popup.style.display = 'block';
     console.log(error);
   });
 } 
@@ -436,11 +447,6 @@ window.addEventListener('click', function (e) {
     }
   }
 
-  if (btn === 'close') {
-    closeAlert();
-  }
-
-  if (btn === 'delete') {
-    deleteData();
-  }
+  if (btn === 'close') closeAlert();
+  if (btn === 'delete') deleteData();
 });

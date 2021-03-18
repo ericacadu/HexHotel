@@ -5,8 +5,8 @@ getElemt('.copyright .year').innerHTML = yy
 function navBar () {
   const dropdown = getAllElemt('.dropdown')
   const nav = getElemt('nav')
-  if (document.body.clientWidth > 767) {
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+  if (body.clientWidth > 767) {
+    if (body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
       nav.style.top = 0
     } else {
       nav.style.top = '-72px'
@@ -90,13 +90,12 @@ function toggleRoom (data) {
     data.filter(item => {
       if (roomId === item.id) {
         roomName = item.name
+        return roomName
       }
-      return roomName
     })
   }
-
-  window.addEventListener('click', function (e) {
-    const roompicker = document.querySelectorAll('.roompicker')
+  window.addEventListener('click', (e) => {
+    const roompicker = getAllElemt('.roompicker')
     const room = e.target.dataset.room
     const parent = e.target.parentNode
     if (!room) {
@@ -107,24 +106,31 @@ function toggleRoom (data) {
       removeElemt(roompicker)
     } else {
       showRoomList(data, parent)
+      roomFilter(data)
     }
-
     if (room === 'true') return
-    data.filter(item => {
-      if (room === item.name) {
-        roomName = item.name
-        roomId = item.id
-      }
+    if (rooms.length === 1) {
+      const url = `./room.html?${roomId}`
+      location.assign(url)
+    }
+  })
+}
+
+function roomFilter (data) {
+  const items = getAllElemt('.roompicker li')
+  const ints = getAllElemt('.form-room input')
+  items.forEach(item => {
+    item.addEventListener('click', () => {
+      roomName = item.textContent
       ints.forEach(item => { item.value = roomName })
+      data.filter(item => { 
+        if (roomName === item.name) roomId = item.id
+      })
       return {
         roomName,
         roomId
       }
     })
-    if (rooms.length === 1) {
-      const url = `./room.html?${roomId}`
-      location.assign(url)
-    }
   })
 }
 
@@ -198,10 +204,15 @@ function formFixed () {
   const container = getElemt('.container')
   const formBox = getElemt('.form-group.fixed')
   if (!formBox) return
-  formBox.style.marginRight = -(container.offsetWidth / 2) + 'px'
+  if (body.clientWidth > 992) {
+    formBox.style.marginRight = -(container.offsetWidth / 2) + 'px'
+  } else {
+    formBox.style.marginRight = ''
+  }
 }
-window.addEventListener('load', formFixed)
+
 window.addEventListener('resize', formFixed)
+window.addEventListener('load', formFixed)
 
 // ------------------------------------
 // Reserve
@@ -228,11 +239,11 @@ function getBookingData (data) {
   window.addEventListener('click', (e) => {
     const cal = e.target.dataset.cal
     const total = getElemt('.form-total')
-    const alert = getElemt('.msg-alert')
+    const popup = getElemt('.msg-alert')
     if (!cal) return
     if (dateArray.length < 2) {
       total.style.display = 'none'
-      alert.style.display = 'none'
+      popup.style.display = 'none'
       return
     }
     showPrice(room)
@@ -270,7 +281,7 @@ function calcPrice (array) {
 }
 function showPrice (data) {
   const total = getElemt('.form-total')
-  const alert = getElemt('.msg-alert')
+  const popup = getElemt('.msg-alert')
   const days = calcPrice(bookingDates)
   const price = {
     normal: data.normalDayPrice * (days.totalDays.length - days.weekend.length),
@@ -301,15 +312,15 @@ function showPrice (data) {
       <label>TOTAL</label>
       <div class="price">${currency(totalPrice)}</div>
     </li>`
-    
+
   if (soldoutDates.length > 0) {
-    alert.innerHTML = 'The date you selected is sold out.'
-    alert.style.display = 'block'
+    popup.innerHTML = 'The date you selected is sold out.'
+    popup.style.display = 'block'
     total.style.display = 'none'
   } else {
     total.innerHTML = normalCont + holidayCont + serviceCont + totalCont
     total.style.display = 'block'
-    alert.style.display = 'none'
+    popup.style.display = 'none'
   }
 }
 
@@ -341,18 +352,18 @@ function verify () {
   const phone = getElemt('#phone')
   const isTrim = (item) => item.value.trim()
   const isMsg = (item) => item.parentNode.querySelector('.msg')
-  if (!alert) { return }
+  if (!popup) { return }
   if (soldoutDates.length > 0) {
     cont.innerHTML = 'Please select correct dates.'
-    alert.style.display = 'block'
+    popup.style.display = 'block'
     check = 1
   } else if (dateArray.length < 2) {
     cont.innerHTML = 'Please select 2 dates at least.'
-    alert.style.display = 'block'
+    popup.style.display = 'block'
     check = 1
   } else if (!roomName) {
     cont.innerHTML = 'Please select room style.'
-    alert.style.display = 'block'
+    popup.style.display = 'block'
     check = 1
   } else if (ints.length > 0) {
     ints.forEach(item => {
@@ -372,7 +383,7 @@ function verify () {
 }
 
 function isTEL (item) {
-  const reg = /^[09]{2}[0-9]{8}$/
+  const reg = /^[0]{1}[9]{1}[0-9]{8}$/
   if (!reg.exec(item.value)) {
     return false
   } else {
@@ -419,11 +430,11 @@ function deleteData () {
     const status = res.status
     if (status === 200) {
       cont.innerHTML = 'All reservations has been deleted.'
-      alert.style.display = 'block'
+      popup.style.display = 'block'
     }
   }).catch(error => {
     cont.innerHTML = 'Oops. Something went wrong.<br>Please try again.'
-    alert.style.display = 'block'
+    popup.style.display = 'block'
     console.log(error)
   })
 }
@@ -450,10 +461,6 @@ window.addEventListener('click', (e) => {
       postData(roomId, name.value, phone.value, postDate)
     }
   }
-  if (btn === 'close') {
-    closeAlert()
-  }
-  if (btn === 'delete') {
-    deleteData()
-  }
+  if (btn === 'close') closeAlert()
+  if (btn === 'delete') deleteData()
 })

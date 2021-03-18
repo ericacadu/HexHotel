@@ -34,7 +34,6 @@
     margin: 0; }
     .container .form-group.fixed {
       top: 100%;
-      right: 50%;
       position: absolute;
       -webkit-transform-origin: top right;
           -ms-transform-origin: top right;
@@ -53,7 +52,7 @@
       .room-cloumns .room-item + .room-item, .room-cloumns .title-group + .room-item {
         margin-top: 0; }
   .banner .title-group {
-    padding: 0; }
+    padding-right: 15px; }
   #room .row, #form .row {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -111,10 +110,14 @@
             flex-flow: row; }
   .copyright {
     text-align: left; }
-  .container .form-group.fixed {
+  .container .form-group {
     top: 25%;
-    right: 50%;
-    position: fixed; }
+    right: 0;
+    position: absolute; }
+    .container .form-group.fixed {
+      top: 25%;
+      right: 50%;
+      position: fixed; }
   .room-cloumns .room-item, .room-cloumns .title-group {
     max-width: 350px; }
   .description {

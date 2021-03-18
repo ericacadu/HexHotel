@@ -25,7 +25,7 @@ var getBookings = function getBookings() {
   });
 };
 
-if (pathname === '/room.html') {
+if (pathname.includes('room.html')) {
   id = location.search.split('?')[1];
   window.axios.all([getRooms(), getBookings()]).then(window.axios.spread(function (roomData, bookingData) {
     var rooms = roomData.data.items;
@@ -34,7 +34,7 @@ if (pathname === '/room.html') {
     getRoomsInfo(bookings);
     getBookingData(bookings);
   }));
-} else if (pathname === '/reserve.html') {
+} else if (pathname.includes('reserve.html')) {
   id = location.search.split('?')[1].split('&')[1];
   window.axios.all([getRooms(), getBookings()]).then(window.axios.spread(function (roomData, bookingData) {
     var rooms = roomData.data.items;
@@ -42,7 +42,7 @@ if (pathname === '/room.html') {
     active(rooms);
     getBookingData(bookings);
   }));
-} else if (pathname === '/success.html') {
+} else if (pathname.includes('success.html')) {
   id = location.search.split('?')[1].split('&')[1];
   window.axios.all([getRooms(), getBookings()]).then(window.axios.spread(function (roomData, bookingData) {
     var rooms = roomData.data.items;
@@ -78,8 +78,8 @@ var currency = function currency(x) {
 var body = document.body;
 var wrapper = getElemt('.wrapper');
 var load = getElemt('.loading');
-var alert = getElemt('.alert');
-var cont = alert.querySelector('.alert-content');
+var popup = getElemt('.alert');
+var cont = popup.querySelector('.alert-content');
 var roomName;
 var roomId;
 var check = 0;
@@ -106,10 +106,10 @@ function loading() {
 }
 
 function closeAlert() {
-  alert.classList.add('close');
+  popup.classList.add('close');
   setTimeout(function () {
-    alert.style.display = 'none';
-    alert.classList.remove('close');
+    popup.style.display = 'none';
+    popup.classList.remove('close');
     cont.innerHTML = '';
   }, 600);
 }

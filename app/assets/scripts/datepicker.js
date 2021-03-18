@@ -70,9 +70,9 @@ function showCalendar (target) {
       </tbody>
     </table>
   </div>`
-  addData(datepicker, 'cal', 'div, i, table, thead, tr, tbody')
   target.appendChild(datepicker)
   calendar(cy, cm)
+  addData(datepicker, 'cal', 'div, i, table, thead, tr, tbody')
   datepicker.addEventListener('click', selectDate)
   getElemt('#prev').addEventListener('click', prev)
   getElemt('#next').addEventListener('click', next)
@@ -125,8 +125,8 @@ function calendar (y, m) {
         }
       }
     }
-    addData(table, 'cal', 'tr, td')
     table.appendChild(row)
+    addData(table, 'cal', 'tr, td')
   }
   dateStyle(bookingDates, 'on')
   dateStyle(dateArray, 'act')

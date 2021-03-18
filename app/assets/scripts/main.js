@@ -26,7 +26,7 @@ const getBookings = () => {
   })
 }
 
-if (pathname === '/room.html') {
+if (pathname.includes('room.html')) {
   id = location.search.split('?')[1]
   window.axios.all([
     getRooms(),
@@ -39,7 +39,7 @@ if (pathname === '/room.html') {
       getRoomsInfo(bookings)
       getBookingData(bookings)
     }))
-} else if (pathname === '/reserve.html') {
+} else if (pathname.includes('reserve.html')) {
   id = location.search.split('?')[1].split('&')[1]
   window.axios.all([
     getRooms(),
@@ -51,7 +51,7 @@ if (pathname === '/room.html') {
       active(rooms)
       getBookingData(bookings)
     }))
-} else if (pathname === '/success.html') {
+} else if (pathname.includes('success.html')) {
   id = location.search.split('?')[1].split('&')[1]
   window.axios.all([
     getRooms(),
@@ -82,8 +82,8 @@ const currency = (x) => '$' + x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 const body = document.body
 const wrapper = getElemt('.wrapper')
 const load = getElemt('.loading')
-const alert = getElemt('.alert')
-const cont = alert.querySelector('.alert-content')
+const popup = getElemt('.alert')
+const cont = popup.querySelector('.alert-content')
 let roomName
 let roomId
 let check = 0
@@ -110,10 +110,10 @@ function loading () {
 }
 
 function closeAlert () {
-  alert.classList.add('close')
+  popup.classList.add('close')
   setTimeout(() => {
-    alert.style.display = 'none'
-    alert.classList.remove('close')
+    popup.style.display = 'none'
+    popup.classList.remove('close')
     cont.innerHTML = ''
   }, 600)
 }

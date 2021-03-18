@@ -52,9 +52,9 @@ function showCalendar(target) {
   }
 
   datepicker.innerHTML = "\n  <div class=\"date-header\">\n    <i class=\"material-icons\" id=\"prev\">chevron_left</i>\n    <div class=\"title\">".concat(months[cm], " ").concat(cy, "</div>\n    <i class=\"material-icons\" id=\"next\">chevron_right</i>\n  </div>\n  <div class=\"data-body\">\n    <table>\n      <thead>\n        <tr>\n          <th>sun</th>\n          <th>mon</th>\n          <th>tue</th>\n          <th>wed</th>\n          <th>thu</th>\n          <th>fri</th>\n          <th>sat</th>\n        </tr>\n      </thead>\n      <tbody>\n      </tbody>\n    </table>\n  </div>");
-  addData(datepicker, 'cal', 'div, i, table, thead, tr, tbody');
   target.appendChild(datepicker);
   calendar(cy, cm);
+  addData(datepicker, 'cal', 'div, i, table, thead, tr, tbody');
   datepicker.addEventListener('click', selectDate);
   getElemt('#prev').addEventListener('click', prev);
   getElemt('#next').addEventListener('click', next);
@@ -107,8 +107,8 @@ function calendar(y, m) {
       }
     }
 
-    addData(table, 'cal', 'tr, td');
     table.appendChild(row);
+    addData(table, 'cal', 'tr, td');
   }
 
   dateStyle(bookingDates, 'on');
