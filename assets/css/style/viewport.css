@@ -26,7 +26,7 @@
   .header {
     margin-top: 3em; }
   .dropdown {
-    min-width: 350px; }
+    width: 350px; }
   .container .form-group {
     top: 25%;
     right: 0;
