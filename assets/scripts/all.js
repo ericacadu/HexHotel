@@ -80,7 +80,6 @@ function toggleRoom(data) {
 
   window.addEventListener('click', function (e) {
     var roompicker = getAllElemt('.roompicker');
-    var items = getAllElemt('.roompicker li');
     var room = e.target.dataset.room;
     var parent = e.target.parentNode;
 
@@ -93,12 +92,10 @@ function toggleRoom(data) {
       removeElemt(roompicker);
     } else {
       showRoomList(data, parent);
+      roomFilter(data);
     }
 
     if (room === 'true') return;
-    items.forEach(function (elemt) {
-      elemt.addEventListener('click', roomFilter(data, room));
-    });
 
     if (rooms.length === 1) {
       var url = "./room.html?".concat(roomId);
@@ -107,21 +104,23 @@ function toggleRoom(data) {
   });
 }
 
-function roomFilter(data, target) {
+function roomFilter(data) {
+  var items = getAllElemt('.roompicker li');
   var ints = getAllElemt('.form-room input');
-  data.filter(function (item) {
-    if (target === item.name) {
-      roomName = item.name;
-      roomId = item.id;
-    }
-
-    ints.forEach(function (item) {
-      item.value = roomName;
-    });
-    return {
-      roomName: roomName,
-      roomId: roomId
-    };
+  items.forEach(function (item) {
+    item.addEventListener('click', function () {
+      roomName = item.textContent;
+      ints.forEach(function (item) {
+        item.value = roomName;
+      });
+      data.filter(function (item) {
+        if (roomName === item.name) roomId = item.id;
+      });
+      return {
+        roomName: roomName,
+        roomId: roomId
+      };
+    }); 
   });
 }
 
