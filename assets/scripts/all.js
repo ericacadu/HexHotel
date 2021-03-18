@@ -81,7 +81,7 @@ function toggleRoom(data) {
   function activeEvent(e) {
     var roompicker = getAllElemt('.roompicker');
     var room = e.target.dataset.room;
-    var parent = e.target.parentNode; 
+    var parent = e.target.parentNode;
 
     if (!room) {
       removeElemt(roompicker);
@@ -92,15 +92,15 @@ function toggleRoom(data) {
       removeElemt(roompicker);
     } else {
       showRoomList(data, parent);
-      var list = getAllElemt('.roompicker li');
-      list.forEach(function (item) {
-        item.addEventListener('click', function () {
-          alert(item.textContent);
-        });
+    }
+
+    if (room === 'true') return;
+    var list = getAllElemt('.roompicker li');
+    list.forEach(function (item) {
+      item.addEventListener('click', function () {
+        alert(room);
       });
-    } 
-
-
+    });
     data.filter(function (item) {
       if (room === item.name) {
         roomName = item.name;
