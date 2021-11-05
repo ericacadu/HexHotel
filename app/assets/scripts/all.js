@@ -123,7 +123,7 @@ function roomFilter (data) {
     item.addEventListener('click', () => {
       roomName = item.textContent
       ints.forEach(item => { item.value = roomName })
-      data.filter(item => { 
+      data.filter(item => {
         if (roomName === item.name) roomId = item.id
       })
       return {

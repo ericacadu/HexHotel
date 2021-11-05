@@ -86,7 +86,7 @@ const popup = getElemt('.alert')
 const cont = popup.querySelector('.alert-content')
 let roomName
 let roomId
-let check = 0
+const check = 0
 
 function addData (arry, name, item) {
   const newArry = arry.querySelectorAll(item)

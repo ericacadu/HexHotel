@@ -10,7 +10,7 @@ let cy = today.getFullYear() // current year
 let cm = today.getMonth() // current month
 let dateArray = []
 let bookingDates = []
-let reserveDates = []
+const reserveDates = []
 let soldoutDates = []
 
 // 月曆開關
@@ -90,7 +90,6 @@ function calendar (y, m) {
   const maxYear = max.getFullYear()
   const maxMonth = max.getMonth()
   const maxDate = max.getDate()
-
   for (let r = 0; r < 6; r++) {
     const row = createElemt('TR')
     let cell, cellText
@@ -109,7 +108,8 @@ function calendar (y, m) {
         date++
 
         // 過期日期
-        if (cy < yy || cm < mm ||
+        if (cy < yy ||
+          (cy === yy && cm < mm) ||
           (cy === yy && cm === mm && date <= dt)) {
           cell.setAttribute('class', 'off')
         }
@@ -119,7 +119,7 @@ function calendar (y, m) {
           cell.setAttribute('class', 'now')
         }
         // 只能預訂90天內日期
-        if (cy > maxYear || cm > maxMonth ||
+        if (cy > maxYear || (cy >= maxYear && cm > maxMonth) ||
           (cy >= maxYear && cm >= maxMonth && date > maxDate + 1)) {
           cell.setAttribute('class', 'off')
         }
