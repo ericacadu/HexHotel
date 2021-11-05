@@ -91,7 +91,7 @@ function calendar(y, m) {
         row.appendChild(cell);
         date++; 
 
-        if (cy < yy || cm < mm || cy === yy && cm === mm && date <= dt) {
+        if (cy < yy || cy === yy && cm < mm || cy === yy && cm === mm && date <= dt) {
           cell.setAttribute('class', 'off');
         } 
 
@@ -101,7 +101,7 @@ function calendar(y, m) {
         } 
 
 
-        if (cy > maxYear || cm > maxMonth || cy >= maxYear && cm >= maxMonth && date > maxDate + 1) {
+        if (cy > maxYear || cy >= maxYear && cm > maxMonth || cy >= maxYear && cm >= maxMonth && date > maxDate + 1) {
           cell.setAttribute('class', 'off');
         }
       }
